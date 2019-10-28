@@ -19,7 +19,7 @@
                 <v-row>
                     <v-col cols="md-8">
                         <p class="text-azul text-titulo__detalle">{{carTarea.nombre}}</p>
-                        <v-img src="@/assets/imagenes/ford-mustang.jpg"></v-img>
+                        <v-img :src="carTarea.foto"></v-img>
                         <v-card
                             class="mx-auto py-4 px-4"
                             max-width=""
@@ -32,7 +32,7 @@
                     </v-col>
                     <v-col cols="md-4">
                         <div class="bl-precio">
-                            <p class="mb-0"><span>Precio: </span>{{carTarea.precio}}</p>
+                            <p class="mb-0"><span>Precio: </span>{{ carTarea.precio | currency}}</p>
                         </div>
                         <v-card
                             class="mx-auto"

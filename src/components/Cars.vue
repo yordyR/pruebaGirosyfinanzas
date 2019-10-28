@@ -10,7 +10,7 @@
             {{propsListCars.nombre}}
           </v-col>
           <v-col cols="6" class="px-1 py-0">
-            <p class="text-precio mb-0">${{propsListCars.precio}}</p>
+            <p class="text-precio mb-0">{{ propsListCars.precio | currency}}</p>
           </v-col>
         </v-row>
       </v-card-title>
@@ -45,7 +45,7 @@
     },
     methods: {
       setComparar () {
-          this.$emit('selectCar', this.propsListCars.id)
+        this.$emit('selectCar', this.propsListCars.id)
       },
     },
   }

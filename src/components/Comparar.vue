@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto bl-carros">
     <v-img :src="propsListCars.foto" fluid alt="" height="208">
-      <button class="btn-compara" @click="setComparar">Comparar</button>
+      <button class="btn-compara" >Comparar</button>
     </v-img>
     <router-link class="text-negro" :to="{name: 'detail', params:{ id: propsListCars.id }}" >
       <v-card-title>

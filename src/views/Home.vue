@@ -26,13 +26,12 @@
           </v-col>
         </v-row>
       </v-container>
-
     </section>
     <section>
       <v-container>
         <v-row >
           <v-col cols="12" xs="12" sm="6" md="4" lg="4" xl="3" v-for="(showCars,index) in arrayFiltrado" :key="index">
-            <Cars :propsListCars="showCars" @selectCars="setSelectedCars" ></Cars>
+            <Cars :propsListCars="showCars" @selectCar="comparador" ></Cars>
           </v-col>
         </v-row>
       </v-container>
@@ -40,7 +39,7 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
+          <v-btn color="primary" dark v-on="on">Lista de comparaciones</v-btn>
         </template>
         <v-card>
           <v-toolbar dark color="primary">
@@ -54,7 +53,7 @@
             </v-toolbar-items>
           </v-toolbar>
           <v-row>
-            <v-col cols="12" md="4" v-for="(compararCars,index) in listCars" :key="index">
+            <v-col cols="12" md="4" v-for="(compararCars,index) in arrayComparador" :key="index">
               <Comparar :propsListCars="compararCars" ></Comparar>
             </v-col>
           </v-row>
@@ -85,7 +84,7 @@
       }
     },
     methods: {
-      ...mapActions(['getCarsTareas', 'buscador']),
+      ...mapActions(['getCarsTareas', 'buscador', 'comparador']),
       setSelectedCars (id){
          this.selectedProyecto = id
          console.log(this.selectedProyecto)
@@ -95,8 +94,8 @@
       this.getCarsTareas()
     },
     computed : {
-      ...mapState(['carsTareas']),
-      ...mapGetters(['arrayFiltrado'])
+      ...mapState(['carsTareas', 'inComparacion']),
+      ...mapGetters(['arrayFiltrado', 'arrayComparador'])
     }
   }
 </script>

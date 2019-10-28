@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     carsTareas: [],
     carTarea: {},
-    buscar: ''
+    buscar: '',
+    idComparador: '',
+    inComparacion: []
   },
   mutations: {
     setCarsTareas(state, carsTareas){
@@ -23,6 +25,10 @@ export default new Vuex.Store({
       // payload entrega cada valor que el usuario digita
       console.log(payload)
       state.buscar = payload.toLowerCase()
+    },
+    comparador({commit, state}, payload){
+      console.log('vuex', payload)
+      state.idComparador = payload
     },
     getCarsTareas ({commit}) {
       const carsTareas = []
@@ -63,7 +69,16 @@ export default new Vuex.Store({
       return arreglofiltrado
     },
     arrayComparador(state){
-      
+      let arregloComparador = []
+      for(let tareaComparar of state.carsTareas){
+        let id= tareaComparar.id
+        // se compara el valor insertado con los datos en carstareas
+        if(id.indexOf(state.idComparador) >= 0){
+          arregloComparador.push(tareaComparar)
+        }
+      }
+      console.log('comparacion', state.inComparacion)
+      return arregloComparador
     }
   },
   modules: {
